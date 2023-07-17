@@ -9,6 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     background-color: #1F2937;
 }
 
@@ -18,7 +19,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 75px;
 }
 
 .footer {
@@ -30,4 +30,24 @@ body {
     color: #F9FAF8;
     font-size: 18px;
     padding: 30px;
+}
+
+.grid {
+    display: flex;
+    gap: 1px;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    width: 720px;
+    height: 720px;
+    max-width: 960px;
+    max-height: 960px;
+    /* border: #F9FAF8 1px solid; */
+}
+
+.square {
+    border-radius: 15%;
+    /* border: #F9FAF8 1px solid; */
+    background-color: brown;
+    width: 44.0625px;
+    height: 44.0625px;
 }
