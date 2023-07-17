@@ -1,0 +1,33 @@
+* {
+    font-family: Roboto, Georgia, 'Times New Roman', Times, serif;
+    font-size: xx-large;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1F2937;
+}
+
+.header {
+    padding: 16px 15%;
+    color: #F9FAF8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 75px;
+}
+
+.footer {
+    flex: 1;
+    max-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F9FAF8;
+    font-size: 18px;
+    padding: 30px;
+}
