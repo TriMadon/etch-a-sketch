@@ -41,13 +41,18 @@ body {
     height: 720px;
     max-width: 960px;
     max-height: 960px;
-    /* border: #F9FAF8 1px solid; */
 }
 
 .square {
     border-radius: 15%;
-    /* border: #F9FAF8 1px solid; */
     background-color: brown;
-    width: 44.0625px;
-    height: 44.0625px;
+}
+
+.square.colored {
+    background-color: aquamarine;
+}
+
+.square.hovered {
+    transition: ease-in-out 0.05s;
+    scale: 1.3;
 }
