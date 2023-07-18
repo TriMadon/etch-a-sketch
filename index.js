@@ -77,7 +77,7 @@ button.addEventListener("animationend", () => {
 });
 
 function promptUserForSize() {
-	let newSize = +prompt("Type the new size of the grid (0-100)");
+	let newSize = +prompt("Type the new size of the grid (1-100)");
 	if (
 		!Number.isInteger(newSize) ||
 		!newSize ||
