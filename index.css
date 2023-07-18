@@ -49,16 +49,12 @@ h1 {
 }
 
 .square {
-	border-radius: 15%;
-	background-color: brown;
+    user-select: none;
+    transition: scale ease-in-out 0.1s;
 }
 
-.square.colored {
-	background-color: aquamarine;
-}
-
-.square:hover {
-	transition: ease-in-out 0.1s;
+.square.hovered {
+	transition: scale ease-in-out 0.1s;
 	scale: 1.3;
 }
 
