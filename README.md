@@ -1,0 +1,1 @@
+This a an Etch-a-sketch app written with HTML, CSS, and JavaScript that demonstrates DOM manipulation. 
