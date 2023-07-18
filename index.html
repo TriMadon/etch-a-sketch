@@ -15,13 +15,26 @@
 		<div class="header">
 			<h1>Etch a Sketch</h1>
 		</div>
-        <div class="container">
-            <div class="controls">
-                <button id="resize">Resize</button>
-                <button id="clear">Clear</button>
-            </div>
-            <div class="grid"></div>
-        </div>
+		<div class="container">
+			<div class="controls">
+				<button id="resize">Resize</button>
+				<button id="clear">Clear</button>
+				<button id="recolor">Grid color</button>
+				<button id="brush">Brush Mode</button>
+			</div>
+			<dialog id="resizeModal" class="modal">
+				<form class="form" method="dialog">
+					<h2>Select a new size</h2>
+                    <span class="rangeValue"></span>
+					<input type="range" min="1" max="100" value="16"/>
+					<div class="buttons">
+						<button class="cancel">Cancel</button>
+						<button class="submit" type="submit">OK</button>
+					</div>
+				</form>
+			</dialog>
+			<div class="grid"></div>
+		</div>
 		<div class="footer">Copyright © TriMadon 2023</div>
 	</body>
 </html>

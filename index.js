@@ -82,13 +82,27 @@ function promptUserForSize() {
 makeNewGrid(16);
 
 const allButtons = document.querySelectorAll("button");
-const resizeButton = document.querySelector("#resize");
-const clearButton = document.querySelector("#clear");
+const resizeButton = document.getElementById("resize");
+const clearButton = document.getElementById("clear");
+const recolorButton = document.getElementById("recolor");
+const brushModeButton = document.getElementById("brush");
 
-allButtons.forEach((button) => {
-	button.onclick = () => button.classList.add("pulse");
-	button.onanimationend = () => button.classList.remove("pulse");
-});
+const resizeModal = document.getElementById("resizeModal");
+const resizeSlider = document.querySelector("#resizeModal input");
+const rangeValue = document.querySelector("#resizeModal .rangeValue");
+const resizeOk = document.querySelector("#resizeModal .submit");
+const resizeCancel = document.querySelector("#resizeModal .cancel");
 
-resizeButton.onclick = () => promptUserForSize();
+resizeButton.onclick = () => resizeModal.showModal();
+resizeSlider.onmousemove = () => showSliderValue(resizeSlider.value);
+resizeOk.onclick = () => makeNewGrid(resizeSlider.value);
+
+function showSliderValue(value) {
+    rangeValue.textContent = value;
+}
+
+
 clearButton.onclick = () => clearGrid();
+
+
+

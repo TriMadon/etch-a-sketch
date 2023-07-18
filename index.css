@@ -22,7 +22,7 @@ body {
 	align-items: center;
 }
 
-h1 {
+h1, h2 {
 	margin: 0;
 }
 
@@ -75,7 +75,7 @@ h1 {
     gap: 30px;
 }
 
-.controls button {
+button {
 	background-color: brown;
 	color: #f9faf8;
 	padding: 8px 32px;
@@ -87,21 +87,91 @@ h1 {
 	transition: box-shadow 0.3s ease-in-out;
 }
 
-.pulse {
-	animation: pulse-animation 0.3s;
-}
-
-@keyframes pulse-animation {
-	0% {
-		box-shadow: 0 0 0 0px rgba(249, 250, 248, 0.2);
-	}
-	100% {
-		box-shadow: 0 0 0 20px rgba(249, 250, 248, 0);
-	}
-}
-
 button:hover {
 	transition: transform ease-in-out 0.3s;
 	box-shadow: -0px 0px 0 0 #f9faf8;
 	transform: translate(-3px, 3px);
+}
+
+button:active {
+	animation: pulse-animation 0.1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes pulse-animation {
+	from {
+		scale: 1;
+	}
+	to {
+		scale: .85;
+	}
+}
+
+.modal {
+    max-width: 500px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 1em rgb(0 0 0 / .3);
+    background-color: #1f2937;
+    color: #f9faf8;
+    animation: slideIn cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+
+/* .modal:: {
+    animation: slideIn cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    animation-direction: reverse;
+} */
+
+@keyframes slideIn {
+    from {
+        scale: 0.5;
+        opacity: 0.5;
+        transform: translateX(-200px);
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+
+.modal::backdrop {
+    background-color: rgb(255 255 255 / .05);
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.modal h2, #resizeModal span {
+    align-self: center;
+}
+
+#resizeModal input {
+    align-self: center;
+    width: 350px;
+    height: 15px;
+    background-color: brown;
+    outline: none;
+    border-radius: 15px;
+    box-shadow: inset 0 0 5px rgb(57, 19, 6);
+    appearance: none;
+}
+
+#resizeModal input::-webkit-slider-thumb {
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background-color: #f9faf8;
+}
+
+#resizeModal .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
 }
