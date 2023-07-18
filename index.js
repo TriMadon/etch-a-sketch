@@ -33,6 +33,9 @@ function createGrid(numSqaures) {
         if (numSqaures < 26) {
             makeItPop(square);
         }
+        if (numSqaures > 50) {
+            square.style.borderRadius = "";
+        }
 		sqaures.push(square);
 	}
 	addSquare(sqaures);
