@@ -3,7 +3,9 @@ const DEFAULT_COLOR = "brown";
 const NEW_COLOR = "aquamarine";
 const grid = document.querySelector(".grid");
 
-function createSqaure(width, color = DEFAULT_COLOR) {
+let gridColor = DEFAULT_COLOR;
+
+function createSqaure(width, color = gridColor) {
 	let square = document.createElement("div");
 	square.classList.add("square");
 	square.style.width = `${width}px`;
@@ -53,7 +55,7 @@ function makeItPop(square) {
 function clearGrid() {
 	const squares = document.querySelectorAll(".square");
     squares.forEach((square) => {
-        square.style.backgroundColor = DEFAULT_COLOR;
+        square.style.backgroundColor = gridColor;
     });
 }
 
@@ -79,19 +81,26 @@ function promptUserForSize() {
 	makeNewGrid(newSize);
 }
 
+function recolorGrid(color) {
+    gridColor = color;
+	clearGrid();
+}
+
 makeNewGrid(16);
 
 const allButtons = document.querySelectorAll("button");
 const resizeButton = document.getElementById("resize");
 const clearButton = document.getElementById("clear");
 const recolorButton = document.getElementById("recolor");
-const brushModeButton = document.getElementById("brush");
 
 const resizeModal = document.getElementById("resizeModal");
 const resizeSlider = document.querySelector("#resizeModal input");
 const rangeValue = document.querySelector("#resizeModal .rangeValue");
 const resizeOk = document.querySelector("#resizeModal .submit");
-const resizeCancel = document.querySelector("#resizeModal .cancel");
+
+const recolorModal = document.getElementById("colorModal");
+const recolorSwatch = document.querySelector("#colorModal input");
+const recolorOk = document.querySelector("#colorModal .submit");
 
 resizeButton.onclick = () => resizeModal.showModal();
 resizeSlider.onmousemove = () => showSliderValue(resizeSlider.value);
@@ -101,8 +110,7 @@ function showSliderValue(value) {
     rangeValue.textContent = value;
 }
 
-
 clearButton.onclick = () => clearGrid();
 
-
-
+recolorButton.onclick = () => recolorModal.showModal();
+recolorOk.onclick = () => recolorGrid(recolorSwatch.value);

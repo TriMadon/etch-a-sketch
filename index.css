@@ -22,7 +22,8 @@ body {
 	align-items: center;
 }
 
-h1, h2 {
+h1,
+h2 {
 	margin: 0;
 }
 
@@ -38,12 +39,12 @@ h1, h2 {
 }
 
 .container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	justify-content: center;
+	align-items: center;
 }
 
 .grid {
@@ -58,8 +59,8 @@ h1, h2 {
 }
 
 .square {
-    user-select: none;
-    transition: scale ease-in-out 0.1s;
+	user-select: none;
+	transition: scale ease-in-out 0.1s;
 }
 
 .square.hovered {
@@ -72,7 +73,7 @@ h1, h2 {
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-items: center;
-    gap: 30px;
+	gap: 30px;
 }
 
 button {
@@ -95,7 +96,7 @@ button:hover {
 
 button:active {
 	animation: pulse-animation 0.1s;
-    animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
 }
 
 @keyframes pulse-animation {
@@ -103,75 +104,104 @@ button:active {
 		scale: 1;
 	}
 	to {
-		scale: .85;
+		scale: 0.85;
 	}
 }
 
 .modal {
-    max-width: 500px;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 0 1em rgb(0 0 0 / .3);
-    background-color: #1f2937;
-    color: #f9faf8;
-    animation: slideIn cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+	max-width: 500px;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 0 1em rgb(0 0 0 / 0.3);
+	background-color: #1f2937;
+	color: #f9faf8;
+	animation: slideIn cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 }
-
-/* .modal:: {
-    animation: slideIn cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
-    animation-direction: reverse;
-} */
 
 @keyframes slideIn {
-    from {
-        scale: 0.5;
-        opacity: 0.5;
-        transform: translateX(-200px);
-    }
-    to {
-        scale: 1;
-        opacity: 1;
-        transform: translateX(0px);
-    }
+	from {
+		scale: 0.5;
+		opacity: 0.5;
+		transform: translateX(-200px);
+	}
+	to {
+		scale: 1;
+		opacity: 1;
+		transform: translateX(0px);
+	}
 }
 
-
 .modal::backdrop {
-    background-color: rgb(255 255 255 / .05);
+	background-color: rgb(255 255 255 / 0.05);
 }
 
 .modal form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 30px;
 }
 
-.modal h2, #resizeModal span {
-    align-self: center;
+.modal h2,
+#resizeModal span,
+#colorModal input {
+	align-self: center;
 }
 
 #resizeModal input {
-    align-self: center;
-    width: 350px;
-    height: 15px;
-    background-color: brown;
-    outline: none;
-    border-radius: 15px;
-    box-shadow: inset 0 0 5px rgb(57, 19, 6);
-    appearance: none;
+	align-self: center;
+	width: 350px;
+	height: 15px;
+	background-color: brown;
+	outline: none;
+	border-radius: 15px;
+	box-shadow: inset 0 0 5px rgb(57, 19, 6);
+	appearance: none;
 }
 
 #resizeModal input::-webkit-slider-thumb {
-    appearance: none;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    background-color: #f9faf8;
+	appearance: none;
+	width: 17px;
+	height: 17px;
+	border-radius: 50%;
+	background-color: #f9faf8;
 }
 
-#resizeModal .buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 25px;
+.modal .buttons {
+	display: flex;
+	justify-content: space-between;
+	gap: 25px;
+}
+
+input[type="color"] {
+	transition: transform 0.1s ease-in-out;
+	background-color: transparent;
+	width: 260px;
+	height: 80px;
+	border: none;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+input[type="color"]:hover {
+	transform: scale(1.05);
+}
+
+input[type="color"]:active {
+	transition: transform 0.05s ease-in-out;
+	transform: scale(1);
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	border: none;
+	border-radius: 20px;
+	padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
