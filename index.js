@@ -92,6 +92,7 @@ const allButtons = document.querySelectorAll("button");
 const resizeButton = document.getElementById("resize");
 const clearButton = document.getElementById("clear");
 const recolorButton = document.getElementById("recolor");
+const brushModeButton = document.getElementById("brush");
 
 const resizeModal = document.getElementById("resizeModal");
 const resizeSlider = document.querySelector("#resizeModal input");
@@ -101,6 +102,8 @@ const resizeOk = document.querySelector("#resizeModal .submit");
 const recolorModal = document.getElementById("colorModal");
 const recolorSwatch = document.querySelector("#colorModal input");
 const recolorOk = document.querySelector("#colorModal .submit");
+
+const brushModal = document.getElementById("brushModal");
 
 resizeButton.onclick = () => resizeModal.showModal();
 resizeSlider.onmousemove = () => showSliderValue(resizeSlider.value);
@@ -114,3 +117,5 @@ clearButton.onclick = () => clearGrid();
 
 recolorButton.onclick = () => recolorModal.showModal();
 recolorOk.onclick = () => recolorGrid(recolorSwatch.value);
+
+brushModeButton.onclick = () => brushModal.showModal();

@@ -20,22 +20,45 @@
 				<button id="resize">Resize</button>
 				<button id="clear">Clear</button>
 				<button id="recolor">Grid color</button>
+				<button id="brush">Customize brush</button>
 			</div>
 			<dialog id="resizeModal" class="modal">
 				<form class="form" method="dialog">
 					<h2>Select a new size</h2>
-                    <span class="rangeValue"></span>
-					<input type="range" min="1" max="100" value="16"/>
+					<span class="rangeValue"></span>
+					<input type="range" min="1" max="100" value="16" />
 					<div class="buttons">
 						<button class="cancel">Cancel</button>
 						<button class="submit" type="submit">OK</button>
 					</div>
 				</form>
 			</dialog>
-            <dialog id="colorModal" class="modal">
+			<dialog id="colorModal" class="modal">
 				<form class="form" method="dialog">
 					<h2>Select a new color</h2>
 					<input id="colorPicker" type="color" value="#a52a2a" />
+					<div class="buttons">
+						<button class="cancel">Cancel</button>
+						<button class="submit" type="submit">OK</button>
+					</div>
+				</form>
+			</dialog>
+			<dialog id="brushModal" class="modal">
+				<form class="form" method="dialog">
+					<h2>Customize your brush</h2>
+					<select name="brushMode" id="brush">
+						<option value="" selected disabled hidden>Choose the color mode</option>
+						<option value="solid">Solid coloring</option>
+						<option value="random">Random coloring</option>
+					</select>
+					<input
+						id="colorPicker"
+						type="color"
+						value="#a52a2a"
+						style="display: none"
+					/>
+					<!-- <label for="myCheckbox">My Checkbox</label>
+					<input type="checkbox" id="myCheckbox" name="myCheckbox" /> -->
 					<div class="buttons">
 						<button class="cancel">Cancel</button>
 						<button class="submit" type="submit">OK</button>
