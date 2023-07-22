@@ -25,7 +25,8 @@ const recolorOk = document.querySelector("#colorModal .submit");
 const brushModal = document.getElementById("brushModal");
 const brushColorMode = document.getElementById("colorMode");
 const brushColorPicker = document.querySelector("#brushModal .colorPicker");
-const darkEffectCheckbox = document.querySelector("#brushModal .checkbox");
+const darkEffectCheckbox = document.getElementById("darkCheckbox");
+const mouseHoldCheckbox = document.getElementById("holdCheckbox");
 const brushOk = document.querySelector("#brushModal .submit");
 
 // #endregion
@@ -37,6 +38,8 @@ let brushColor = DEFAULT_BRUSH_COLOR;
 let brushMode = DEFAULT_BRUSH_MODE;
 let darkeningEffect = false;
 let brightnessTrackerMap = new Map();
+let mouseHoldDrawingMode = false;
+let mouseDown = false;
 
 // #endregion
 
@@ -85,6 +88,7 @@ function createSqaure(width, color = gridColor) {
 }
 
 function changeColor(e) {
+	if (mouseHoldDrawingMode && !mouseDown) return;
 	if (brushMode === "erasor") {
 		e.target.style.backgroundColor = gridColor;
 		brightnessTrackerMap.get(e.target).resetBrightness();
@@ -173,6 +177,8 @@ function recolorGrid(color) {
 	clearGrid();
 }
 
+function changeElementEventListener(element, listenerString) {}
+
 // #endregion
 
 // #region initialization functions
@@ -211,6 +217,11 @@ function initBrush() {
 			: DEFAULT_BRUSH_MODE;
 		brushColor = brushColorPicker.value;
 		darkeningEffect = darkEffectCheckbox.checked;
+		mouseHoldDrawingMode = mouseHoldCheckbox.checked;
+		if (mouseHoldDrawingMode) {
+			document.body.onmousedown = () => mouseDown = true;
+			document.body.onmouseup = () => mouseDown = false;
+		};
 	};
 }
 

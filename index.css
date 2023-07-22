@@ -230,9 +230,9 @@ input[type="checkbox"]:checked {
 	background-color: brown;
 }
 
-.darkOption {
+.checkboxContainer {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	gap: 8px;
 }
