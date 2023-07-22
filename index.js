@@ -1,10 +1,12 @@
 const GRID_WIDTH = 720;
 const DEFAULT_COLOR = "brown";
 const DEFAULT_BRUSH_COLOR = "aquamarine";
+const DEFAULT_BRUSH_MODE = "solid";
 const grid = document.querySelector(".grid");
 
 let gridColor = DEFAULT_COLOR;
 let brushColor = DEFAULT_BRUSH_COLOR;
+let brushMode = DEFAULT_BRUSH_MODE;
 
 function createSqaure(width, color = gridColor) {
 	let square = document.createElement("div");
@@ -18,13 +20,27 @@ function createSqaure(width, color = gridColor) {
 }
 
 function changeColor(e) {
-	e.target.style.backgroundColor = brushColor;
+	if (brushMode === "solid") {
+		e.target.style.backgroundColor = brushColor;
+	} else if (brushMode === "random") {
+		e.target.style.backgroundColor = generateRandomColor();
+	}
+}
+
+function generateRandomColor() {
+	return `RGB(${Math.floor(Math.random() * 255) + 1}, ${
+		Math.floor(Math.random() * 255) + 1
+	}, ${Math.floor(Math.random() * 255) + 1})`;
 }
 
 function addSquare(squares) {
 	squares.forEach((square) => {
 		grid.appendChild(square);
 	});
+}
+
+function getAllSquares() {
+	return document.querySelectorAll(".square");
 }
 
 function createGrid(numSqaures) {
@@ -54,8 +70,7 @@ function makeItPop(square) {
 }
 
 function clearGrid() {
-	const squares = document.querySelectorAll(".square");
-	squares.forEach((square) => {
+	getAllSquares().forEach((square) => {
 		square.style.backgroundColor = gridColor;
 	});
 }
@@ -85,14 +100,6 @@ function promptUserForSize() {
 function recolorGrid(color) {
 	gridColor = color;
 	clearGrid();
-}
-
-function customizeBrush(ColorMode, color) {
-	if (ColorMode === "solid") {
-		brushColor = color;
-	} else {
-		brushColor = DEFAULT_BRUSH_COLOR;
-	}
 }
 
 makeNewGrid(16);
@@ -138,5 +145,7 @@ brushColorMode.addEventListener("change", function () {
 		brushColorPicker.style.display = "none";
 	}
 });
-brushOk.onclick = () =>
-	customizeBrush(brushColorMode.value, brushColorPicker.value);
+brushOk.onclick = () => {
+	brushMode = brushColorMode.value;
+	brushColor = brushColorPicker.value;
+};
