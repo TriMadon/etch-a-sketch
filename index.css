@@ -229,3 +229,14 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
 	background-color: brown;
 }
+
+.darkOption {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+#brushModal label {
+	font-size: large;
+}

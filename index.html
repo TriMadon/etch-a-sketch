@@ -47,7 +47,9 @@
 				<form class="form" method="dialog">
 					<h2>Customize your brush</h2>
 					<select name="colorMode" id="colorMode">
-						<option value="" selected disabled hidden>Choose the color mode</option>
+						<option value="" selected disabled hidden>
+							Choose the color mode
+						</option>
 						<option value="solid">Solid coloring</option>
 						<option value="random">Random coloring</option>
 					</select>
@@ -57,8 +59,18 @@
 						value="#7fffd4"
 						style="display: none"
 					/>
-					<!-- <label for="myCheckbox">My Checkbox</label>
-					<input type="checkbox" id="myCheckbox" name="myCheckbox" /> -->
+					<div class="darkOption">
+						<input
+							class="checkbox"
+							type="checkbox"
+							id="darkCheckbox"
+							name="darkCheckbox"
+						/>
+						<label for="darkCheckbox"
+							>Apply darkening effect on subsequent
+							interactions.</label
+						>
+					</div>
 					<div class="buttons">
 						<button class="cancel">Cancel</button>
 						<button class="submit" type="submit">OK</button>
