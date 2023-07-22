@@ -85,6 +85,11 @@ function createSqaure(width, color = gridColor) {
 }
 
 function changeColor(e) {
+	if (brushMode === "erasor") {
+		e.target.style.backgroundColor = gridColor;
+		brightnessTrackerMap.get(e.target).resetBrightness();
+		return;
+	}
 	if (brushMode === "solid") {
 		e.target.style.backgroundColor = brushColor;
 	} else if (brushMode === "random") {
@@ -93,7 +98,7 @@ function changeColor(e) {
 	if (darkeningEffect) {
 		brightnessTrackerMap.get(e.target).changeBrightnessBy(-0.1);
 	} else {
-		e.target.style.filter = "brightness(1)";
+		brightnessTrackerMap.get(e.target).resetBrightness();
 	}
 }
 
