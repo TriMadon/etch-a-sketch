@@ -1,9 +1,10 @@
 const GRID_WIDTH = 720;
 const DEFAULT_COLOR = "brown";
-const NEW_COLOR = "aquamarine";
+const DEFAULT_BRUSH_COLOR = "aquamarine";
 const grid = document.querySelector(".grid");
 
 let gridColor = DEFAULT_COLOR;
+let brushColor = DEFAULT_BRUSH_COLOR;
 
 function createSqaure(width, color = gridColor) {
 	let square = document.createElement("div");
@@ -17,7 +18,7 @@ function createSqaure(width, color = gridColor) {
 }
 
 function changeColor(e) {
-	e.target.style.backgroundColor = NEW_COLOR;
+	e.target.style.backgroundColor = brushColor;
 }
 
 function addSquare(squares) {
@@ -54,9 +55,9 @@ function makeItPop(square) {
 
 function clearGrid() {
 	const squares = document.querySelectorAll(".square");
-    squares.forEach((square) => {
-        square.style.backgroundColor = gridColor;
-    });
+	squares.forEach((square) => {
+		square.style.backgroundColor = gridColor;
+	});
 }
 
 function deleteGrid() {
@@ -82,8 +83,16 @@ function promptUserForSize() {
 }
 
 function recolorGrid(color) {
-    gridColor = color;
+	gridColor = color;
 	clearGrid();
+}
+
+function customizeBrush(ColorMode, color) {
+	if (ColorMode === "solid") {
+		brushColor = color;
+	} else {
+		brushColor = DEFAULT_BRUSH_COLOR;
+	}
 }
 
 makeNewGrid(16);
@@ -92,7 +101,7 @@ const allButtons = document.querySelectorAll("button");
 const resizeButton = document.getElementById("resize");
 const clearButton = document.getElementById("clear");
 const recolorButton = document.getElementById("recolor");
-const brushModeButton = document.getElementById("brush");
+const customizeBrushButton = document.getElementById("brush");
 
 const resizeModal = document.getElementById("resizeModal");
 const resizeSlider = document.querySelector("#resizeModal input");
@@ -100,22 +109,34 @@ const rangeValue = document.querySelector("#resizeModal .rangeValue");
 const resizeOk = document.querySelector("#resizeModal .submit");
 
 const recolorModal = document.getElementById("colorModal");
-const recolorSwatch = document.querySelector("#colorModal input");
+const recolorPicker = document.querySelector("#colorModal .colorPicker");
 const recolorOk = document.querySelector("#colorModal .submit");
 
 const brushModal = document.getElementById("brushModal");
+const brushColorMode = document.getElementById("colorMode");
+const brushColorPicker = document.querySelector("#brushModal .colorPicker");
+const brushOk = document.querySelector("#brushModal .submit");
 
 resizeButton.onclick = () => resizeModal.showModal();
 resizeSlider.onmousemove = () => showSliderValue(resizeSlider.value);
 resizeOk.onclick = () => makeNewGrid(resizeSlider.value);
 
 function showSliderValue(value) {
-    rangeValue.textContent = value;
+	rangeValue.textContent = value;
 }
 
 clearButton.onclick = () => clearGrid();
 
 recolorButton.onclick = () => recolorModal.showModal();
-recolorOk.onclick = () => recolorGrid(recolorSwatch.value);
+recolorOk.onclick = () => recolorGrid(recolorPicker.value);
 
-brushModeButton.onclick = () => brushModal.showModal();
+customizeBrushButton.onclick = () => brushModal.showModal();
+brushColorMode.addEventListener("change", function () {
+	if (brushColorMode.value === "solid") {
+		brushColorPicker.style.display = "block";
+	} else {
+		brushColorPicker.style.display = "none";
+	}
+});
+brushOk.onclick = () =>
+	customizeBrush(brushColorMode.value, brushColorPicker.value);

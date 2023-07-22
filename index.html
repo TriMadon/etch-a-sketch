@@ -36,7 +36,7 @@
 			<dialog id="colorModal" class="modal">
 				<form class="form" method="dialog">
 					<h2>Select a new color</h2>
-					<input id="colorPicker" type="color" value="#a52a2a" />
+					<input class="colorPicker" type="color" value="#a52a2a" />
 					<div class="buttons">
 						<button class="cancel">Cancel</button>
 						<button class="submit" type="submit">OK</button>
@@ -46,15 +46,15 @@
 			<dialog id="brushModal" class="modal">
 				<form class="form" method="dialog">
 					<h2>Customize your brush</h2>
-					<select name="brushMode" id="brush">
+					<select name="colorMode" id="colorMode">
 						<option value="" selected disabled hidden>Choose the color mode</option>
 						<option value="solid">Solid coloring</option>
 						<option value="random">Random coloring</option>
 					</select>
 					<input
-						id="colorPicker"
+						class="colorPicker"
 						type="color"
-						value="#a52a2a"
+						value="#7fffd4"
 						style="display: none"
 					/>
 					<!-- <label for="myCheckbox">My Checkbox</label>
