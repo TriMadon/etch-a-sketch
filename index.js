@@ -146,6 +146,6 @@ brushColorMode.addEventListener("change", function () {
 	}
 });
 brushOk.onclick = () => {
-	brushMode = brushColorMode.value;
+	brushMode = brushColorMode.value? brushColorMode.value : DEFAULT_BRUSH_MODE;
 	brushColor = brushColorPicker.value;
 };
